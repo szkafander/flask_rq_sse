@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flask rq sse callback test</title>
+</head>
+
+<body>
+
+  <script>
+
+    let source = new EventSource("http://127.0.0.1:5000/stream");
+
+    source.addEventListener("sse_test", event => {
+      console.log(JSON.parse(event.data));
+    }, false);
+
+    source.addEventListener("sse_from_task", event => {
+      console.log(JSON.parse(event.data));
+    }, false);
+
+    function apiTest() {
+      fetch("http://127.0.0.1:5000/api_test")
+      .then(response => response.json())
+      .then(data => console.log(data));
+    }
+
+    function sseTest() {
+      fetch("http://127.0.0.1:5000/sse_test")
+      .then(response => response.json())
+      .then(data => console.log(data));
+    }
+
+    function queueTest() {
+      fetch("http://127.0.0.1:5000/queue_test")
+      .then(response => response.json())
+      .then(data => console.log(data));
+    }
+
+  </script>
+
+  <button id="apiTest" onclick="apiTest()">API test</button>
+  <button id="sseTest" onclick="sseTest()">SSE test</button>
+  <button id="queueTest" onclick="queueTest()">queue test</button>
+
+</body>
+
+</html>
