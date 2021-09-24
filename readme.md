@@ -1,0 +1,1 @@
+I have been pulling my hair out trying to figure out how to send SSE reports from within callbacks of RQ tasks enqueued by a Flask app. This is a tempate that does exactly that.
