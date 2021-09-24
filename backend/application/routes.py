@@ -1,12 +1,13 @@
 # coding=utf-8
 
-from flask import Blueprint, current_app
+from flask import Blueprint
 from flask.json import jsonify
 from redis import Redis
 from rq import Queue
+from flask_sse import sse
 
 from application.tasks import task
-from lib.flask_sse import sse
+
 
 api = Blueprint("rest", __name__)
 

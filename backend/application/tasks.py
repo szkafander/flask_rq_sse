@@ -1,9 +1,9 @@
 # coding=utf-8
 
 from time import sleep
-from application import create_app
+from flask_sse import sse
 
-from lib.flask_sse import sse
+from application import create_app
 
 
 def task(arg):

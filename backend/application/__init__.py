@@ -2,8 +2,7 @@
 
 from flask import Flask
 from flask_cors import CORS
-
-from lib.flask_sse import sse
+from flask_sse import sse
 
 
 def create_app():
